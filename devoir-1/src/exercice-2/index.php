@@ -1,5 +1,7 @@
 <?php
 
+    var_dump($_POST);
+
     $travels = [
         ['departure' => 'Paris', 'arrival' => 'Nantes', 'departureTime' => '11:00', 'arrivalTime' => '12:34', 'driver' => 'Thomas'],
         ['departure' => 'Orléans', 'arrival' => 'Nantes', 'departureTime' => '05:15', 'arrivalTime' => '09:32', 'driver' => 'Mathieu'],
@@ -12,8 +14,11 @@
         ['departure' => 'Nice', 'arrival' => 'Nantes', 'departureTime' => '12:00', 'arrivalTime' => '16:00', 'driver' => 'Charlotte'],
     ];
 
-    if(isset($_POST['city'])){
+//    var_dump($travels);
+
+    if(isset($_POST['city']) AND !empty($_POST['departureTime'])){
         $city = $_POST['city'];
+        $time = $_POST['departureTime'];
     }
 
     $count = 0;
@@ -43,7 +48,7 @@
 <!--        <div class="card w-50">-->
             <?php
                 foreach ($travels as $travel) {
-                    if ($city === $travel['departure']){
+                    if (($city === $travel['departure']) AND ($time === $travel['departureTime'])){
             ?>
                             <ul class="list-group w-50 mb-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -62,6 +67,9 @@
                     }
                 }
             ?>
+            <span class="alert alert-danger">
+                Aucun itiniréraire ne correspond à votre demande. Veuillez changer les paramètres.
+            </span>
 <!--        </div>-->
     </div>
 </body>
