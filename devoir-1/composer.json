@@ -1,0 +1,18 @@
+{
+    "name": "shand/devoir-1",
+    "description": "Devoir sur Php, partie initiation.",
+    "require": {
+        "twitter/bootstrap": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shand\\Devoir1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shaneal972",
+            "email": "oshaneal@gmail.com"
+        }
+    ]
+}
