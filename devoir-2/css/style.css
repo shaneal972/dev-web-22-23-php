@@ -1,0 +1,12 @@
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: url("../images/objets-film-fond-blanc.jpg") no-repeat center center;
+    object-fit: cover;
+}
+
+h1 {
+   font-weight: 900;
+}

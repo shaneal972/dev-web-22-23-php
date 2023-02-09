@@ -1,0 +1,11 @@
+h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-body h5 {
+    color: #0a58ca;
+}
+
+.card-body p {
+    font-style: italic;
+}
