@@ -10,8 +10,7 @@ class Ecole {
     public function __construct($nom){
         $this->nom = $nom;
     }
-
-
+   
     /**
      * Get the value of id
      */ 

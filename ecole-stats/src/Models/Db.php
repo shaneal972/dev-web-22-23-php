@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use PDO;
 use App\Models\Ecole;
 use App\Models\Eleve;
 use App\Models\Sport;
@@ -35,7 +36,7 @@ class Db {
         $nomEleve = $eleve->getNom(); // $nomEcole = "Ecole A"; 
         $prenomEleve = $eleve->getPrenom();
         // $sql = "INSERT INTO ecole (nom) VALUES ('" . $nomEcole . "')";
-        $sql = "INSERT INTO eleve (nom) VALUES (:nom, :prenom)";
+        $sql = "INSERT INTO eleve (nom, prenom) VALUES (:nom, :prenom)";
 
 
         $stmt = $this->pdo->prepare($sql);
@@ -55,6 +56,36 @@ class Db {
         $stmt->bindParam('libelle', $libelle);
         $stmt->execute();
     }
+
+    public function getEleves(): array{
+        $sql = "SELECT id FROM eleve";
+
+        $stmt = $this->pdo->query($sql, null, PDO::FETCH_OBJ);
+
+        return $stmt->fetchAll();
+    }
+
+    public function getEcoles(): array{
+        $sql = "SELECT id FROM ecole";
+
+        $stmt = $this->pdo->query($sql, null, PDO::FETCH_OBJ);
+
+        return $stmt->fetchAll();
+    }
+
+    public function addEleveToEcole(){
+
+        $eleves = $this->getEleves();
+        $ecoles = $this->getEcoles();
+
+        for($i = 0; $i < count($eleves); $i++){
+            
+        }
+
+
+    }
+
+
 
 
 
