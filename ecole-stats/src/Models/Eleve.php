@@ -7,7 +7,13 @@ class Eleve {
     private int $id;
     private string $nom;
     private string $prenom;
+   
+    public function __construct($nom, $prenom){
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+    }
 
+    
     /**
      * Get the value of id
      */ 

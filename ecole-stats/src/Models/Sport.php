@@ -7,6 +7,10 @@ class Sport {
     private int $id;
     private string $libelle;
 
+    public function __construct(string $libelle){
+        $this->libelle = $libelle;
+    }
+
     /**
      * Get the value of id
      */ 
