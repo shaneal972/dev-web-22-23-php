@@ -10,7 +10,7 @@
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
     <!--  Style personnalisé  -->
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="py-2">
 <div class="container">

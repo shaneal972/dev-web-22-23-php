@@ -1,0 +1,17 @@
+{
+    "name": "shand/devoir-1",
+    "autoload": {
+        "psr-4": {
+            "App\\": "devoir-1-poo/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shaneal972",
+            "email": "oshaneal@gmail.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    }
+}

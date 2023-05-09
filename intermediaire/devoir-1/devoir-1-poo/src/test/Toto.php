@@ -1,6 +1,6 @@
 <?php
 
-namespace Toto;
+namespace src\test;
 
 class toto
 {

@@ -1,9 +1,14 @@
 <?php
 session_start();
 
+require '../../vendor/autoload.php';
+require '../src/functions/config.php';
 require '../src/functions/header.php';
-$pdo = require '../src/Connexion.php';
 
+use App\Connexion;
+
+$conn = new Connexion();
+$pdo = $conn->connect($host, $dbname, $username, $password);
 
 
 ?>
@@ -15,11 +20,11 @@ $pdo = require '../src/Connexion.php';
                     <h5 class="card-title text-center mb-5 fw-light fs-5">Connexion</h5>
                     <form action="login.php" method="post">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="text" class="form-control" name="username" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Username</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
 

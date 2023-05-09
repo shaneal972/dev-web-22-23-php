@@ -9,10 +9,7 @@ require_once 'functions/config.php';
 
 class Connexion
 {
-
-    public $test;
-
-    public static function make($host, $dbname, $username, $password)
+    public function connect($host, $dbname, $username, $password)
     {
         $dsn = "mysql:host=$host;dbname=$dbname;charset=UTF8";
 
@@ -27,4 +24,3 @@ class Connexion
 }
 
 
-return Connexion::make($host, $dbname, $username, $password);
