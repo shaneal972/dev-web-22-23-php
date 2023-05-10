@@ -29,5 +29,9 @@ class EleveController {
         $this->db->addSportToEleve();
     }
 
+    public function elevesByEcole(){
+        $this->db->getElevesByEcole();
+    }
+
 
 }

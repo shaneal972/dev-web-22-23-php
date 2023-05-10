@@ -13,3 +13,4 @@ $ec = new EleveController;
 // $ecoleController->create();
 // $ec->addEleve();
 // $ec->addEleveSport();
+$ec->elevesByEcole();

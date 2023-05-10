@@ -149,8 +149,32 @@ class Db {
             if($this->verifyDuplicateSport($id_eleve, $id_sport) === false){
                 $this->insertEleveSPort($id_eleve, $id_sport);
             }
+            $sql = "SELECT COUNT(id_eleve)
+                    FROM eleve_sport
+                    WHERE id_eleve = :idEleve;
+                    ";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam('idEleve', $id_eleve);
+            $stmt->execute();
+            $nbre = $stmt->fetch();
+            // var_dump($nbre);
+            if($nbre <= 3){
+                if($this->verifyDuplicateSport($id_eleve, $id_sport) === false){
+                    $this->insertEleveSPort($id_eleve, $id_sport);
+                }
+            }
         }
                
+    }
+
+    public function getElevesByEcole(){
+        $sql = "SELECT COUNT(id_eleve) as nbreEleve, id_ecole
+                FROM eleve
+                GROUP BY id_ecole";
+        
+        $stmt = $this->pdo->query($sql);
+        $res = $stmt->fetchAll(PDO::FETCH_CLASS);
+        var_dump($res);
     }
 
 
