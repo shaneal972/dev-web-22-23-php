@@ -24,4 +24,10 @@ class EleveController {
     public function addEleve(){
         $this->db->addEleveToEcole();
     }
+
+    public function addEleveSport(){
+        $this->db->addSportToEleve();
+    }
+
+
 }

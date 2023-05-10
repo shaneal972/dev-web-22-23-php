@@ -83,6 +83,26 @@ class Db {
         $stmt->execute();
     }
 
+    public function updateSportEleveById($id_eleve, $id_sport){
+        $sql = "UPDATE eleve
+                SET id_sport = $id_sport
+                WHERE id_eleve = $id_eleve";
+        
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();
+    }
+
+    public function insertEleveSPort($id_eleve, $id_sport){
+        $sql = "INSERT INTO eleve_sport (id_eleve, id_sport)
+                VALUES (:idEleve, :idSport)";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam('idEleve', $id_eleve);
+        $stmt->bindParam('idSport', $id_sport);
+
+        $stmt->execute();
+    }
+
     public function addEleveToEcole(){
 
         $eleves = $this->getEleves();
@@ -96,6 +116,41 @@ class Db {
             }
         }
 
+    }
+
+    public function verifyDuplicateSport($id_eleve, $id_sport): bool{
+        $sql = "SELECT id_eleve 
+                FROM eleve_sport
+                WHERE id_eleve = :idEleve AND id_sport = :idSport";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam('idEleve', $id_eleve);
+        $stmt->bindParam('idSport', $id_sport);
+
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        if(count($result) >= 1){
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function addSportToEleve(){
+
+        // $eleves = $this->getEleves();
+        for($i = 0; $i < 50; $i++){
+
+            //Générer une nombre aléatoire entre 1 et 50
+            $id_eleve = rand(1, 50); //1
+            //Générer un nombre aléatoire entre 0 et 5.
+            $id_sport = rand(1, 5); //3
+            //Compter le nombre de fois qu'apparait un id_eleve doit être <= 3.
+            if($this->verifyDuplicateSport($id_eleve, $id_sport) === false){
+                $this->insertEleveSPort($id_eleve, $id_sport);
+            }
+        }
+               
     }
 
 
