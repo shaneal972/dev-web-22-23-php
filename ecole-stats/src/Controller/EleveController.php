@@ -5,14 +5,23 @@ use App\Models\Db;
 
 class EleveController {
 
-    public function create(){
-        $db = new Db;
+    private Db $db;
 
+    public function __construct(){
+        $this->db = new Db;
+    }
+
+    public function create(){
+        
         for($i = 1; $i <= 50; $i++){
             $nom = "Nom" . $i;
             $prenom = "Prenom" . $i;
 
-            $db->insertEleve($nom, $prenom);
+            $this->db->insertEleve($nom, $prenom);
         }
+    }
+
+    public function addEleve(){
+        $this->db->addEleveToEcole();
     }
 }

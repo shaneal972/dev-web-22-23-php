@@ -11,4 +11,4 @@ $sc = new SportController;
 $ec = new EleveController;
 
 // $ecoleController->create();
-$ec->create();
+// $ec->addEleve();

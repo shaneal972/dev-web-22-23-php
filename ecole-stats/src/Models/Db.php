@@ -58,30 +58,43 @@ class Db {
     }
 
     public function getEleves(): array{
-        $sql = "SELECT id FROM eleve";
+        $sql = "SELECT id_eleve FROM eleve";
+
+        $stmt = $this->pdo->query($sql, null, PDO::FETCH_OBJ);
+
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+
+    public function getEcoles(): array{
+        $sql = "SELECT id_ecole FROM ecole";
 
         $stmt = $this->pdo->query($sql, null, PDO::FETCH_OBJ);
 
         return $stmt->fetchAll();
     }
 
-    public function getEcoles(): array{
-        $sql = "SELECT id FROM ecole";
-
-        $stmt = $this->pdo->query($sql, null, PDO::FETCH_OBJ);
-
-        return $stmt->fetchAll();
+    public function updateEleveById($id_eleve, $id_ecole){
+        $sql = "UPDATE eleve
+                SET id_ecole = $id_ecole
+                WHERE id_eleve = $id_eleve";
+        
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();
     }
 
     public function addEleveToEcole(){
 
         $eleves = $this->getEleves();
-        $ecoles = $this->getEcoles();
 
-        for($i = 0; $i < count($eleves); $i++){
-            
+        foreach ($eleves as $id_eleve) {
+            foreach ($id_eleve as $id) {
+                //Générer un nombre aléatoire entre 1 et 3.
+                $id_ecole = rand(1, 3);
+                $this->updateEleveById($id, $id_ecole);
+                
+            }
         }
-
 
     }
 
