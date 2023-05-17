@@ -13,12 +13,19 @@ class Db {
     private $conn;
     private $pdo; 
 
+    
     public function __construct(){
         $this->conn = new Connexion;
 
         $this->pdo = $this->conn->connect("localhost", "ecole_stats", "root", "");
     }
 
+    /**
+     * Permet d'insérer les écoles dans la bdd
+     * 
+     * @param string $nom
+     * @return void
+     */
     public function insertEcole($nom) { // $db->insertEcole("Ecole A");
         $ecole = new Ecole($nom); // $this->nom = "Ecole A";
         $nomEcole = $ecole->getNom(); // $nomEcole = "Ecole A"; 
@@ -74,7 +81,15 @@ class Db {
         return $stmt->fetchAll();
     }
 
-    public function updateEleveById($id_eleve, $id_ecole){
+    /**
+     * Permet de mettre le champ id_ecole dans la table eleve
+     * 
+     * @param int $id_eleve
+     * @param int $id_ecole
+     * 
+     * @return void
+     */
+    public function updateEleveById(int $id_eleve, int $id_ecole){
         $sql = "UPDATE eleve
                 SET id_ecole = $id_ecole
                 WHERE id_eleve = $id_eleve";
